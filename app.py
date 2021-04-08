@@ -40,8 +40,9 @@ def callback():
 
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
-    line_bot_api.reply_message(event.reply_token,
-                               TextSendMessage(text=event.message.text))
+    msg = event.message.text
+    s = '吃飽沒?'
+    line_bot_api.reply_message(event.reply_token, TextSendMessage(text=s))
 
 
 if __name__ == "__main__":  #如果app.py這個檔案是直接被執行的,而不是被載入的(import)的話,才執行app.run()
