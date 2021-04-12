@@ -6,6 +6,7 @@ from linebot.models import (
     MessageEvent,
     TextMessage,
     TextSendMessage,
+    StickerSendMessage,
 )
 
 app = Flask(__name__)
@@ -42,6 +43,9 @@ def callback():
 def handle_message(event):
     msg = event.message.text
     r = '很抱歉,你說甚麼?'
+    if '貼圖' in msg:
+        sticker_message = StickerSendMessage(package_id='1', sticker_id='1')
+        return
     if msg in ['hi', 'Hi']:
         r = '嗨屁阿!'
     elif '誰' in msg:
